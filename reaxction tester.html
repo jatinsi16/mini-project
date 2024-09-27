@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   
+    <meta charset="UTF-8">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>REACTION TESTER </title>
+    
+    <style>
+        /* Style the element with the id "s" */
+        #s{
+            /* Set the height of the element to 300 pixels */
+            height: 300px;
+            /* Set the width of the element to 300 pixels */
+            width: 300px;
+            /* Set the position of the element to relative */
+            position: relative;
+            /* Set the border radius of the element to 50% */
+            border-radius: 50%;
+            /* Set the background color of the element to bisque */
+            background-color: bisque;
+        }
+        
+    </style>
+</head>
+<!-- Define the body section of the document -->
+<body>
+    <!-- Display a heading with the text "test how fast u can react" -->
+    <h1>test how fast u can react</h1>
+    <!-- Display a paragraph with the text "click on the boxes as fast as u can" -->
+    <P>click on the boxes as fast as u can</P>
+    <!-- Create a div element with the id "s" -->
+    <div id="s"></div>
+    <!-- Define the script section of the document -->
+    <script>
+        // Get the current time in milliseconds
+        var start = new Date().getTime();
+        // Define a function to generate a random color
+        function getrandomcolor() {
+            // Define a string of hexadecimal digits
+            var letters = '0123456789ABCDEF';
+            // Initialize a variable to store the random color
+            var color = '#';
+            // Loop 6 times to generate a 6-digit hexadecimal color code
+            for (var i = 0; i < 6; i++) {
+                // Append a random hexadecimal digit to the color code
+                color += letters[Math.floor(Math.random() * 16)];
+            }
+            // Return the generated random color
+            return color;
+        }
+        // Define a function to move the element with the id "s" to a new random position
+        function move() {
+            // Initialize variables to store the new left, top, and width/height values
+            var left;
+            var top;
+            var wh;
+            // Generate a random left position between 0 and 300 pixels
+            left = Math.random() * 300;
+            // Generate a random top position between 0 and 300 pixels
+            top = Math.random() * 300;
+            // Generate a random width/height value between 100 and 600 pixels
+            wh = (Math.random() * 500) + 100;
+            // Set the left position of the element to the generated value
+            document.getElementById("s").style.left = left + "px";
+            // Set the top position of the element to the generated value
+            document.getElementById("s").style.top = top + "px";
+            // Set the width and height of the element to the generated value
+            document.getElementById("s").style.height = wh + "px";
+            document.getElementById("s").style.width = wh + "px";
+            // Set the background color of the element to a random color
+            document.getElementById("s").style.backgroundColor = getrandomcolor();
+            // Update the start time to the current time
+            start = new Date().getTime();
+        }
+        // Call the move function to initialize the position of the element
+        move();
+        // Add an event listener to the element with the id "s" to handle clicks
+        document.getElementById("s").onclick = function() {
+            // Hide the element
+            document.getElementById("s").style.display = "none";
+            // Get the current time in milliseconds
+            var end = new Date().getTime();
+            // Calculate the reaction time by subtracting the start time from the end time
+            var reactiontime = (end - start) / 1000;
+            // Display an alert box with the reaction time
+            alert(reactiontime);
+            // Call the move function to move the element to a new random position
+            move();
+            // Show the element again
+            document.getElementById("s").style.display = "block";
+        }
+    </script>
+</body>
+</html>
